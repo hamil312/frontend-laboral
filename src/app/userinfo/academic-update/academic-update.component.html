@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="col-lg-6 offset-3">
+        <header>
+            <h3>Edit Academic Information</h3>
+        </header>
+        <section class="container">
+            <form [formGroup]="academicForm" (ngSubmit)="!academicForm.invalid && editAcademicInfo()">
+                <div class="row">
+                    <div class="col col-12"> 
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="educativeInstitution">Educative Institution</label>
+                            <input id="educativeInstitution" class="form-control" formControlName="educativeInstitution" maxlength="30" autocomplete="off" placeholder="Educative Institution">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('educativeInstitution')!.hasError('required') && academicForm.get('educativeInstitution')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('educativeInstitution')!.hasError('minlength')">The content is too short</div>
+                        </div>
+
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="title">Title</label>
+                            <input id="title" class="form-control" formControlName="title" maxlength="30" autocomplete="off" placeholder="Title">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('title')!.hasError('required') && academicForm.get('title')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('title')!.hasError('minlength')">The content is too short</div>
+                        </div>
+
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="academicDiscipline">Academic Discipline</label>
+                            <input id="academicDiscipline" class="form-control" formControlName="academicDiscipline" maxlength="30" autocomplete="off" placeholder="Academic Discipline">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('academicDiscipline')!.hasError('required') && academicForm.get('academicDiscipline')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('academicDiscipline')!.hasError('minlength')">The content is too short</div>
+                        </div>
+
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="startDate">Starting Date</label>
+                            <input type="date" id="startDate" class="form-control" formControlName="startDate" maxlength="30" autocomplete="off" placeholder="Starting Date">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('startDate')!.hasError('required') && academicForm.get('startDate')!.touched">Required field</div>
+                        </div>
+
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="endDate">Finishing Date</label>
+                            <input type="date" id="endDate" class="form-control" formControlName="endDate" maxlength="30" autocomplete="off" placeholder="Finishing Date">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('endDate')!.hasError('required') && academicForm.get('endDate')!.touched">Required field</div>
+                        </div>
+
+                        <div formArrayName="aditionalActivities" *ngFor="let aditionalActivity of aditionalActivities.controls; let n=index">
+                            <input [formControlName]="n" class="form-control" placeholder="aditionalActivity" id="n" maxlength="30">
+                            <button type="button" class="btn btn-danger" (click)="removeAditionalActivities(n)">Remove aditional activity</button>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="addAditionalActivities()">Add aditional activity</button> 
+
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="description">Description</label>
+                            <input id="description" class="form-control" formControlName="description" maxlength="30" autocomplete="off" placeholder="Description">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('description')!.hasError('required') && academicForm.get('description')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="academicForm.get('description')!.hasError('minlength')">The content is too short</div>
+                        </div>
+
+                        <div formArrayName="abilities" *ngFor="let ability of abilities.controls; let i=index">
+                            <input [formControlName]="i" class="form-control" placeholder="Ability" id="i" maxlength="30">
+                            <button type="button" class="btn btn-danger" (click)="removeAbility(i)">Remove Ability</button>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="addAbility()">Add Ability</button>
+
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary" [disabled]="!academicForm.valid">Actualizar</button>&nbsp;
+            </form>
+        </section>
+    </div>
+</div>

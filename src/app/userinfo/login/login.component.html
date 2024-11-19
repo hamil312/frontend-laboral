@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="col-lg-6 offset-lg-3">
+        <!-- Encabezado -->
+    <header>
+        <h1>Iniciar Sesion</h1>
+    </header>
+    <section>
+        
+        <form action="" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+            <div class="row">
+                <!-- campos del formulario -->
+                <div class="col col-12">
+                    
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="email">ingresar usuario</label>
+                        <input id="email" class="form-control" formControlName="email" autocomplete="off" placeholder="Ingrese su usuario">
+<!--                         <div class="alert alert_danger alert-dismissible fade show" *ngIf="loginForm.get('email')!.hasError('required') && loginForm.get('email')!.touched">Campo Requerido</div>
+                        <div class="alert alert_danger alert-dismissible fade show" *ngIf="loginForm.get('email')!.hasError('minlength') && loginForm.get('email')!.touched">El contenido es muy corto</div> -->
+                    </div>
+                    
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="contrasena">Ingresar contraseña</label>
+                        <input id="contrasena" type="password" class="form-control" formControlName="contrasena" autocomplete="off" placeholder="Ingrese la contraseña">
+<!--                         <div class="alert alert_danger alert-dismissible fade show" *ngIf="loginForm.get('contrasena')!.hasError('required') && loginForm.get('contrasena')!.touched">Campo Requerido</div>
+                        <div class="alert alert_danger alert-dismissible fade show" *ngIf="loginForm.get('contrasena')!.hasError('minlength') && loginForm.get('contrasena')!.touched">El contenido es muy corto</div> -->
+                    </div>
+                    
+                </div>
+            </div>
+            <br />
+            
+            <button  type="submit" class="btn btn-primary" >Iniciar Sesion</button>&nbsp;
+        </form>
+    </section>
+    </div>
+</div>
+

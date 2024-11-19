@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <h3>Lista de Información Laboral</h3>
+
+    <div class="col-12">
+        <table class="table table-striped">
+            <head>
+                <tr>
+                    <th>Ultima Posición</th>
+                    <th>Habilidades</th>
+                    <th>Experiencias Previas</th>
+                    <th>Busca Empleo</th>
+                    <th>Posición Deseada</th>
+                    <th>País De Interés</th>
+                    <th>Teletrabajo</th>
+                </tr>
+            </head>
+            <body>
+                <tr *ngFor="let li of laboralInformation">
+                    <td>{{li.latestPosition.position}}</td>
+                    <td>{{li.abilities}}</td>
+                    <td>{{li.previousExperiences}}</td>
+                    <td>{{li.lookingForEmployement}}</td>
+                    <td>{{li.desiredPosition}}</td>
+                    <td>{{li.desiredCountry}}</td>
+                    <td>{{li.telecommuting}}</td>
+                    <td><button type="button" class="btn btn-primary" (click)="onEditarNavigate(li.id)" title="Editar">Editar</button>&nbsp;</td>
+                </tr>
+            </body>
+        </table>
+    </div>
+</div>

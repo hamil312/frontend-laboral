@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="col-lg-6 offset-3">
+        <header>
+            <h3>Add Laboral Information</h3>
+        </header>
+        <section class="container">
+            <form [formGroup]="userForm" (ngSubmit)="!userForm.invalid && editLaboralInfo()">
+                <div class="row">
+                    <div class="col col-12">
+                        <div formArrayName="previousExperiences" *ngFor="let experience of previousExperiences.controls; let i=index">
+                            <div [formGroupName]="i" class="form-group">
+                              <label for="position">Position</label>
+                              <input id="position" formControlName="position" class="form-control" placeholder="Position" maxlength="30">
+                              <label for="description">Description</label>
+                              <input id="description" formControlName="description" class="form-control" placeholder="Description" maxlength="256">
+                              <label for="company">Company</label>
+                              <input id="company" formControlName="company" class="form-control" placeholder="Company" maxlength="30">
+                            </div>
+                            <button type="button" class="btn btn-danger" (click)="removeExperience(i)">Remove Experience</button>
+                          </div>
+                          <button type="button" class="btn btn-primary" (click)="addExperience()">Add Experience</button>
+                  
+                          
+                          <div formArrayName="abilities" *ngFor="let ability of abilities.controls; let i=index">
+                            <input [formControlName]="i" class="form-control" placeholder="Ability" id="i" maxlength="30">
+                            <button type="button" class="btn btn-danger" (click)="removeAbility(i)">Remove Ability</button>
+                          </div>
+                          <button type="button" class="btn btn-primary" (click)="addAbility()">Add Ability</button>
+                  
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="lookingForEmployement">Are you looking for employement</label>
+                            <input id="lookingForEmployement"  type="checkbox" value="true" class="form-control" formControlName="lookingForEmployement" maxlength="30" autocomplete="off">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('lookingForEmployement')!.hasError('required') && userForm.get('lookingForEmployement')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('lookingForEmployement')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="desiredPosition">Desired Position</label>
+                            <input id="desiredPosition" class="form-control" formControlName="desiredPosition" maxlength="30" autocomplete="off" placeholder="Desired Position">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('desiredPosition')!.hasError('required') && userForm.get('desiredPosition')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('desiredPosition')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="desiredCountry">Desired Country</label>
+                            <input id="desiredCountry" class="form-control" formControlName="desiredCountry" maxlength="30" autocomplete="off" placeholder="Desired Country">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('desiredCountry')!.hasError('required') && userForm.get('desiredCountry')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('desiredCountry')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="telecommuting">Are you interested in telecommuting</label>
+                            <input id="telecommuting" type="checkbox" value="true" class="form-control" formControlName="telecommuting" maxlength="30" autocomplete="off">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('telecommuting')!.hasError('required') && userForm.get('telecommuting')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('telecommuting')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="latestPositionCompany">Latest Company</label>
+                            <input id="latestPositionCompany" class="form-control" formControlName="latestPositionCompany" maxlength="30" autocomplete="off" placeholder="Write the last company you worked for">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('latestPositionCompany')!.hasError('required') && userForm.get('latestPositionCompany')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('latestPositionCompany')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="latestPositionPosition">Latest Position</label>
+                            <input id="latestPositionPosition" class="form-control" formControlName="latestPositionPosition" maxlength="30" autocomplete="off" placeholder="Write the name of the last position you worked">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('latestPositionPosition')!.hasError('required') && userForm.get('latestPositionPosition')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('latestPositionPosition')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                        <div class="form-group mx-sm-3 sb-2">
+                            <label for="latestPositionDescription">Latest Position Description</label>
+                            <input id="latestPositionDescription" class="form-control" formControlName="latestPositionDescription" maxlength="256" autocomplete="off" placeholder="Write the description of your latest position">
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('latestPositionDescription')!.hasError('required') && userForm.get('latestPositionDescription')!.touched">Required field</div>
+                            <div class="alert alert-danger alert-dismissible fade show" *ngIf="userForm.get('latestPositionDescription')!.hasError('minlength')">The content is too short</div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Actualizar</button>&nbsp;
+            </form>
+        </section>
+    </div>
+</div>
